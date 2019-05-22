@@ -1,0 +1,56 @@
+# ZSH initialization
+# man zsh(1)
+#
+# if ZDOTDIR is unset HOME is used
+# /etc is install specific
+#
+# /etc/zshenv
+# $HOME/.zshenv (me - conf/zshenv-xdg)
+# $ZDOTDIR/.zshenv (p6df env - conf/zshenv)
+# if login
+#   /etc/zprofile
+#   $ZDOTDIR/.zprofile
+# if interactive
+#      /etc/zshrc
+#      $ZDOTDIR/.zshrc (entry point - conf/.zshrc)
+# if login
+#   /etc/zlogin
+#   $ZDOTDIR/.zlogin
+
+# https://specifications.freedesktop.org/basedir-spec/latest/
+#export XDG_DATA_HOME=$HOME/.local/share
+#export XDG_CONFIG_HOME=$HOME/.config
+#export XDG_CACHE_HOME=$HOME/.cache
+
+export XDG_DATA_DIRS=/usr/local/share/:/usr/share/
+export XDG_CONFIG_DIR=/etc/xdg
+#export XDG_RUNTIME_DIR
+
+# Indirection from XDG
+#export P6_DFZ_DATA_DIR=$XDG_DATA_HOME/p6m7g8/p6df
+#export P6_DFZ_CONFIG_DIR=$XDG_CONFIG_HOME/p6m7g8/p6df
+#export P6_DFZ_CACHE_DIR=$XDG_CACHE_HOME/p6m7g8/p6df
+
+export P6_DFZ_DATA_DIR=$HOME
+export P6_DFZ_CONFIG_DIR=$HOME
+export P6_DFZ_CACHE_DIR=$HOME/.cache
+
+export P6_DFZ_DATA_DIRS=$XDG_DATA_DIRS
+export P6_DFZ_CONFIG_DIRS=$XDG_CONFIG_DIR
+export P6_DFZ_RUNTIME_DIR=$XDG_RUNTIME_DIR
+
+export P6_DFZ_SRC_DIR=$P6_DFZ_DATA_DIR/src/github.com
+export P6_DFZ_SRC_P6M7G8_DIR=$P6_DFZ_SRC_DIR/p6m7g8
+
+export P6_DFZ_ZSHENV_XDG_FILE=$P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zshenv-xdg # myself
+export P6_DFZ_ZSHENV_FILE=$P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zshenv
+export P6_DFZ_ZSHRC_FILE=$P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zshrc
+
+#P6_DEBUG=1
+#P6_DRY_RUN=1
+
+# Load p6df's env
+. $P6_DFZ_ZSHENV_FILE
+
+# https://wiki.archlinux.org/index.php/XDG_Base_Directory_support for ZSH/ZDOTDIR
+export ZDOTDIR=$P6_DFZ_DATA_DIR
