@@ -12,6 +12,7 @@ p6df::module::recurse() {
   ## @ModuleDeps
   local -aU ModuleDeps
 
+  # XXX: should be tail-recursive
   p6df::util::exists "$repo[prefix]::deps" && $repo[prefix]::deps
 
   local dep
