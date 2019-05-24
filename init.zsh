@@ -1,11 +1,10 @@
 p6df::modules::core::version() { echo "0.0.1" }
 p6df::modules::core::deps()    { ModuleDeps=(p6m7g8/p6common) }
-p6df::modules::core::external::brew() { }
 p6df::modules::core::home::symlink() {
 
-  ln -fs $P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zshenv $P6_DFZ_DATA_DIR/.zshenv
   ln -fs $P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zshrc  $P6_DFZ_DATA_DIR/.zshrc
-  ln -fs $P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zsh-me $P6_DFZ_DATA_DIR/.zsh-me
+  ln -fs $P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zshenv $P6_DFZ_DATA_DIR/.zshenv-xdg
+#  ln -fs $P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zsh-me $P6_DFZ_DATA_DIR/.zsh-me
 }
 
 p6df::modules::core::path() {

@@ -167,6 +167,8 @@ p6df::modules::fetch() {
 ####################################################################################################
 p6df::modules::external_deps() {
 
+  p6df::util::pm::homebrew::install
+
   p6df::modules::foreach "p6df::module::external_deps"
 }
 
