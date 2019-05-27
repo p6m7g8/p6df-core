@@ -10,6 +10,23 @@
 
 # ----------------------------------------------------------------------------------------------------
 
+#
+# $ZDOTDIR/.zshrc (entry point - conf/.zshrc)
+#  p6df::util::user::init
+#
+#  p6df::modules::pre_init
+#  p6df::modules::bootstrap
+#
+#    p6df::module::pre_init (ea)
+#    p6df::module::init (ea)
+#    p6df::module::post_init (ea)
+#
+#  p6df::modules::post_init
+#
+#  p6df::theme::init
+#  p6df::prompt::init
+#
+
 # Load loads file(s)
 # Init runs setup code(s)
 # File runs no code by itself
@@ -32,7 +49,6 @@
 #         module::recurse()                     |
 #           p6df::modules::$module::deps()      |
 #           module::init -----------------------+
-
 
 #####################################################################################################
 #>
