@@ -26,8 +26,17 @@ p6df::modules::core::cdpath() {
   p6df::util::cdpath_if $P6_DFZ_SRC_P6M7G8_DIR
 }
 
+p6df::modules::core::aliases() {
+ 
+  alias p6df_i="p6df::mgmt::iterator" 
+  alias p6df_u="p6df::mgmt::update_all"
+  alias p6df_r="p6df::mgmt::reload"
+  alias p6df_d="p6df::mgmt::modules::diff"
+}
+
 p6df::modules::core::init() {
 
   p6df::modules::core::path
   p6df::modules::core::cdpath
+  p6df::modules::core::aliases
 }

@@ -1,12 +1,6 @@
 p6df::init() {
 
-  # bootstrap
-  . $P6_DFZ_LIB_DIR/util.zsh
-  . $P6_DFZ_LIB_DIR/module.zsh
-  . $P6_DFZ_LIB_DIR/modules.zsh
-  . $P6_DFZ_LIB_DIR/theme.zsh
-  . $P6_DFZ_LIB_DIR/prompt.zsh
-  . $P6_DFZ_LIB_DIR/mgmt.zsh
+  p6df::init_load_files
 
   p6df::util::user::init
 
@@ -18,6 +12,18 @@ p6df::init() {
   p6df::prompt::init
 
   p6df::util::exists "p6df::_int::bootstrap::msg" && p6df::_int::bootstrap::msg
+}
+
+p6df::init_load_files() {
+  
+  # bootstrap
+  . $P6_DFZ_LIB_DIR/util.zsh
+  . $P6_DFZ_LIB_DIR/mgmt.zsh
+  . $P6_DFZ_LIB_DIR/module.zsh
+  . $P6_DFZ_LIB_DIR/modules.zsh
+  . $P6_DFZ_LIB_DIR/theme.zsh
+  . $P6_DFZ_LIB_DIR/prompt.zsh
+  . $P6_DFZ_LIB_DIR/mgmt.zsh
 }
 
 p6df::init
