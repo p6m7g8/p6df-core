@@ -1,4 +1,4 @@
-p6df::mgmt::update_all() { 
+p6df::mgmt::update_all() {
 
   p6df::mgmt::reload
   p6df::modules::fetch
@@ -9,7 +9,7 @@ p6df::mgmt::update_all() {
 }
 
 p6df::mgmt::reload() {
-  
+
   p6df::init
 }
 
@@ -32,14 +32,13 @@ p6df::mgmt::iterator() {
 
   local module
   for module in $Modules[@]; do
-      echo -n "=====> $module: "
+      echo -n "=====> $module: $cmd $@"
       ( cd $P6_DFZ_SRC_DIR/$module
-	  eval "$cmd $@"
-
-          # %repo
-          p6df::module::parse "$module"
-          p6df::module::recurse "$cmd $@"
-          unset repo
+	  # %repo
+	  p6df::module::parse "$module"
+	  p6df::module::recurse2 "$cmd $@"
+	  unset repo
       )
+      echo
   done
 }

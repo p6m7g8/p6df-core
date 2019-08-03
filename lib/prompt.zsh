@@ -35,13 +35,13 @@ p6df::prompt::runtime() {
   local line
   for line in $@; do
     case $line in
-      %local%) 
-        local -a tmp=$(p6df::prompt::local)
-        lines+=($tmp) 
-        ;;
-      *) 
-        lines+=($line) 
-        ;;
+      %local%)
+	local -a tmp=$(p6df::prompt::local)
+	lines+=($tmp)
+	;;
+      *)
+	lines+=($line)
+	;;
     esac
   done
 
@@ -85,11 +85,11 @@ p6df::prompt::cloud::line() {
 p6df::prompt::lang::line() {
   [ -n "${DISABLE_ENVS}" ] && return
 
-  local -a langs=(python perl ruby go java scala lua R)
+  local -a langs=(python perl ruby go node scala lua R) # java
   local lang
   local str=""
   for lang in $langs[@]; do
-    local prefix=$(cmd_2_envprefix "$lang")
+    local prefix=$(p6_lang_cmd_2_env "$lang")
     local func="p6df::prompt::${lang}::line"
     local cntv=""
     if p6df::util::exists $func; then
@@ -106,10 +106,10 @@ p6df::prompt::lang::line() {
 
 p6df::prompt::env::line() {
   [ -n "${DISABLE_ENVS}" ] && return
- 
+
   local -a envs=(pipenv gopath)
 
-  local env 
+  local env
   for env in $envs[@]; do
     p6df::util::exists p6df::prompt::${env}::line && p6df::prompt::${env}::line
   done

@@ -17,13 +17,32 @@ p6df::module::recurse() {
 
   local dep
   for dep in $ModuleDeps[@]; do
-    eval "$callback \"$dep\" \"$@\" "
+#      echo eval "[$callback] [\"$dep\"] [\"$@\"] "
+      eval "$callback \"$dep\" \"$@\" "
   done
 
   # cleanup
   unset ModuleDeps
 }
 
+p6df::module::recurse2() {
+  local callback="$1"
+  shift 1
+
+  ## @ModuleDeps
+  local -aU ModuleDeps
+
+  # XXX: should be tail-recursive
+  p6df::util::exists "$repo[prefix]::deps" && $repo[prefix]::deps
+
+  local dep
+  for dep in $ModuleDeps[@]; do
+      eval "$callback"
+  done
+
+  # cleanup
+  unset ModuleDeps
+}
 #####################################################################################################
 #>
 # p6df::module::act
@@ -60,15 +79,15 @@ p6df::module::parse() {
 
   declare -gA repo
 
-  repo[repo]=${${module%%:*}##*/}            # org/[repo]
+  repo[repo]=${${module%%:*}##*/}            # org/(repo)
   repo[proto]=https
   repo[host]=github.com                      # XXX:
-  repo[org]=${module%%/*}                    # [org]/repo
-  repo[path]=$repo[org]/$repo[repo]          # [org/repo]
+  repo[org]=${module%%/*}                    # (org)/repo
+  repo[path]=$repo[org]/$repo[repo]          # (org/repo)
   repo[version]=master
 
-  repo[module]=${repo[repo]##p6df-}          # p6df-[repo]
-  repo[prefix]=p6df::modules::$repo[module]  # p6df::modules::[repo] without p6df-
+  repo[module]=${repo[repo]##p6df-}          # p6df-(repo)
+  repo[prefix]=p6df::modules::$repo[module]  # p6df::modules::(repo) without p6df-
   repo[sub]=${module##*:}                    # subdir file path : sep
 
   repo[ns]=$repo[repo]                       # shell namespace
