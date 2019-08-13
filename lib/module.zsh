@@ -158,7 +158,7 @@ p6df::module::unlink() {
 p6df::module::lang() {
   local module="$1"
 
-  p6df::module::act "$module" "lang" "p6df::module::lang"
+  p6df::module::act "$module" "langs" "p6df::module::lang"
 }
 
 #####################################################################################################

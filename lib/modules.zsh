@@ -227,5 +227,5 @@ p6df::modules::unlink() {
 ####################################################################################################
 p6df::modules::langs() {
 
-  p6df::modules::foreach "p6df::module::langs" "$P6_DFZ_SRC_DIR"
+  p6df::modules::foreach "p6df::module::lang" "$P6_DFZ_SRC_DIR"
 }
