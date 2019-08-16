@@ -85,7 +85,7 @@ p6df::prompt::cloud::line() {
 p6df::prompt::lang::line() {
   [ -n "${DISABLE_ENVS}" ] && return
 
-  local -a langs=(python node go ruby scala lua R perl) # java
+  local -a langs=(python node go java ruby scala lua R perl)
   local lang
   local str=""
   for lang in $langs[@]; do
