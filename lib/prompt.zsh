@@ -72,6 +72,15 @@ p6df::prompt::dir::line() {
   echo $dir
 }
 
+p6df::prompt::tool::line() {
+  local -a tools=(terraform docker)
+
+  local tool
+  for tool in $tools[@]; do
+    p6df::util::exists p6df::prompt::${tool}::line && p6df::prompt::${tool}::line
+  done
+}
+
 p6df::prompt::cloud::line() {
 
   local -a clouds=(aws gcp azure) # salesforce digitialocean rspace)
