@@ -44,3 +44,16 @@ p6df::util::pm::homebrew::install() {
 
   yes | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
+p6df::path::fpath_brew_add() {
+    local formulae="$1"
+
+    fpath=(/usr/local/opt/$formulae/share/zsh/site-functions $fpath)
+}
+
+p6df::path::fpath_current() {
+
+    local fp
+    for fp in $fpath[@]; do
+	echo $fp
+    done | sort
+}
