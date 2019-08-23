@@ -39,7 +39,7 @@ p6df::mgmt::iterator() {
 	    (
 		p6_msg "=====> $repo"
 		cd $P6_DFZ_SRC_P6M7G8_DIR/$repo
-		p6_log_and_run "$@"
+		p6_run_write_cmd "$@"
 	    )
 	done
     )
