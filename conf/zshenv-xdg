@@ -46,8 +46,9 @@ export P6_DFZ_ZSHENV_XDG_FILE=$P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zshenv-xdg #
 export P6_DFZ_ZSHENV_FILE=$P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zshenv
 export P6_DFZ_ZSHRC_FILE=$P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zshrc
 
-#P6_DEBUG=1
-#P6_DRY_RUN=1
+export P6_DEBUG=1
+export P6_VERBOSE=1
+# export P6_DRY_RUN=1
 
 # Load p6df's env
 . $P6_DFZ_ZSHENV_FILE

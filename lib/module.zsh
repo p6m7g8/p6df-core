@@ -33,10 +33,12 @@ p6df::module::recurse2() {
   local -aU ModuleDeps
 
   # XXX: should be tail-recursive
+  p6_debug "=======>: $repo[prefix]::deps"
   p6df::util::exists "$repo[prefix]::deps" && $repo[prefix]::deps
 
   local dep
   for dep in $ModuleDeps[@]; do
+      p6_debug "==========>: $dep"
       eval "$callback"
   done
 
@@ -57,7 +59,6 @@ p6df::module::act() {
 
   # %repo
   p6df::module::parse "$module"
-
   p6df::util::exists "p6df::modules::$repo[module]::$module_function" && p6df::modules::$repo[module]::$module_function
   p6df::module::recurse "$callback" "$@"
 
@@ -105,7 +106,7 @@ p6df::module::parse() {
       repo[load_path]=$repo[path]/$repo[sub]/init.zsh
       repo[extra_load_path]=$repo[path]/init.zsh
   else
-    repo[load_path]=$repo[path]/$repo[plugin].plugin.zsh
+      repo[load_path]=$repo[path]/$repo[plugin].plugin.zsh
   fi
 }
 
