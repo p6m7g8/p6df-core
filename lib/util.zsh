@@ -11,10 +11,7 @@ p6df::util::file_load() {
 
   if [[ -r "$file" ]]; then
     FILES+=($file)
-    if p6df::util::exists p6_file_load; then
-      p6_file_load "$file"
-    else
-      . "$file"
+    . "$file"
     fi
   fi
 }

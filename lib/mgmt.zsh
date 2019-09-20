@@ -31,21 +31,16 @@ p6df::mgmt::modules::push() {
 p6df::mgmt::iterator() {
 
     (
-	p6_msg "==> $P6_DFZ_SRC_P6M7G8_DIR"
+	echo "==> $P6_DFZ_SRC_P6M7G8_DIR"
 	cd $P6_DFZ_SRC_P6M7G8_DIR
 
 	local repo
-	for repo in $(p6_dirs_list "."); do
+	for repo in $(cd . ; ls -1); do
 	    (
-		p6_msg "=====> $repo"
+		echo "=====> $repo"
 		cd $P6_DFZ_SRC_P6M7G8_DIR/$repo
-		p6_run_write_cmd "$@"
+		eval "$@"
 	    )
 	done
     )
 }
-
-# local crev=$(git log --pretty=format:"%h" -1)
-# git pull
-# local nrev=$(git log --pretty=format:"%h" -1)
-# git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative ${crev}..${nrev}
