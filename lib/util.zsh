@@ -12,7 +12,6 @@ p6df::util::file_load() {
   if [[ -r "$file" ]]; then
     FILES+=($file)
     . "$file"
-    fi
   fi
 }
 
