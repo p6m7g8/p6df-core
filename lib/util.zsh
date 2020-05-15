@@ -38,7 +38,8 @@ p6df::util::user::init() {
 
 p6df::util::pm::homebrew::install() {
 
-  yes | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+#  yes | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 p6df::path::fpath_brew_add() {
     local formulae="$1"
