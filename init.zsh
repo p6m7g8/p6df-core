@@ -1,3 +1,4 @@
+# shellcheck shell=zsh
 p6df::modules::core::version() { echo "0.0.1" }
 p6df::modules::core::deps()    { ModuleDeps=(p6m7g8/p6common) }
 p6df::modules::core::home::symlink() {
@@ -28,7 +29,7 @@ p6df::modules::core::cdpath() {
 
 p6df::modules::core::aliases() {
 
-  alias p6df_uo="p6df::mgmt::other::modules::update_all"
+  alias p6df_uo="p6df::mgmt::other:update_all"
 
   alias p6df_i="p6df::mgmt::iterator"
   alias p6df_u="p6df::mgmt::update_all"

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # shellcheck shell=zsh
 
 p6df::mgmt::other::modules::update_all() {
@@ -5,6 +6,14 @@ p6df::mgmt::other::modules::update_all() {
   p6df::mgmt::other::iterator "p6_git_p6_pulll"
 }
 
+=======
+p6df::mgmt::other::modules::update_all() {
+
+  p6df::mgmt::other::iterator "git pull"
+}
+
+
+>>>>>>> feature(mgmt): expose api to update non p6m7g8 modules
 p6df::mgmt::other::iterator() {
 
     (
