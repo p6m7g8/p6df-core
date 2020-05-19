@@ -224,6 +224,18 @@ p6df::module::load::files() {
     local relpath="$1"
     local relaux="$2"
 
+###
+#    echo "===========> $repo[module]"
+#    echo "repo[prefix] = $repo[prefix]"
+#    echo "repo[sub]    = $repo[sub]"
+#    echo "repo[ns]     = $repo[ns]"
+#    echo "repo[plugin] = $repo[plugin]"
+#    echo "repo[load_path] = $repo[load_path]"
+#    echo "repo[extra_load_path] = $repo[extra_load_path]"
+#
+#    echo "relaux:  $P6_DFZ_SRC_DIR/$relaux"
+#    echo "relpath: $P6_DFZ_SRC_DIR/$relpath"
+##
     [[ $relaux ]] && p6df::util::file_load "$P6_DFZ_SRC_DIR/$relaux"
     p6df::util::file_load "$P6_DFZ_SRC_DIR/$relpath"
 }
