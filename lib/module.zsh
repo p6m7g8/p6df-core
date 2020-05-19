@@ -96,15 +96,15 @@ p6df::module::parse() {
     repo[load_path]=$repo[path]/init.zsh
   elif [[ $repo[org] = robbyrussell ]]; then
       if [[ $repo[sub] =~ lib ]]; then
-	repo[load_path]=$repo[path]/$repo[sub].zsh
+	  repo[load_path]=$repo[path]/$repo[sub].zsh
       else
-	repo[load_path]=$repo[path]/$repo[repo].plugin.zsh
+	  repo[load_path]=$repo[path]/$repo[sub]/$repo[plugin].plugin.zsh
       fi
   elif [[ $repo[repo] = prezto ]]; then
       repo[load_path]=$repo[path]/$repo[sub]/init.zsh
       repo[extra_load_path]=$repo[path]/init.zsh
   else
-      repo[load_path]=$repo[path]/$repo[plugin].plugin.zsh
+      repo[load_path]=$repo[path]/$repo[sub]/$repo[plugin].plugin.zsh
   fi
 }
 
