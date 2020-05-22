@@ -28,7 +28,7 @@ p6df::modules::core::cdpath() {
 
 p6df::modules::core::aliases() {
 
-  alias p6df_uo="p6df::mgmt::other:update_all"
+  alias p6df_uo="p6df::mgmt::other::update_all"
 
   alias p6df_i="p6df::mgmt::iterator"
   alias p6df_u="p6df::mgmt::update_all"
