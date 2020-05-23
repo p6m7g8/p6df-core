@@ -36,7 +36,7 @@ p6df::prompt::runtime() {
   for line in $@; do
     case $line in
       %local%)
-	local -a tmp=$(p6df::prompt::local)
+	local tmp=$(p6df::prompt::local)
 	lines+=($tmp)
 	;;
       *)
@@ -133,3 +133,24 @@ p6df::prompt::vc::line() {
     p6df::util::exists p6df::prompt::${vc}::line && p6df::prompt::${vc}::line
   done
 }
+
+p6df::prompt::local() {
+  
+  local -a prompts=()
+
+  local module
+  for module in $Modules[@]; do
+    case $module in
+      *local*)
+		# %repo
+		p6df::module::parse $module
+                prompts+=($repo[module])
+      		;;
+    esac
+  done
+
+  local words=${(j: :)prompts}
+
+  p6_return_words "$prompts"
+}
+
