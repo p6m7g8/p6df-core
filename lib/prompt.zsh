@@ -138,7 +138,6 @@ p6df::prompt::vc::line() {
 }
 
 p6df::prompt::local() {
-
   local -a prompts=()
 
   local module
