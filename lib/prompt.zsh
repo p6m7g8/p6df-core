@@ -111,7 +111,9 @@ p6df::prompt::lang::line() {
   done
 
   str=${str## }
-  echo "lang:\t$str"
+  str="lang:\t$str"
+  
+  p6_return_str "$str"
 }
 
 p6df::prompt::env::line() {
