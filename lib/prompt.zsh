@@ -113,7 +113,6 @@ p6df::prompt::lang::line() {
 
   str=${str## }
   str="lang:\t$str"
-
   p6_return_str "$str"
 }
 
