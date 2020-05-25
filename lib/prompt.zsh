@@ -6,6 +6,7 @@
 ####################################################################################################
 p6df::prompt::init() {
 
+  # @PromptLines
   p6df::util::exists "p6df::user::prompt" && p6df::user::prompt
 
   p6df::prompt::process
@@ -49,7 +50,7 @@ p6df::prompt::runtime() {
     local func="p6df::prompt::$line::line"
     if p6df::util::exists $func; then
       local cnt=$($func)
-      [ -n "$cnt" ] && echo $cnt
+      [ -n "$cnt" ] && p6_echo "$cnt"
     fi
   done
 }
@@ -62,14 +63,14 @@ p6df::prompt::std::line() {
 
   local info="[$tty]$user@$host rv=%?"
 
-  echo $info
+  p6_return_str "$info"
 }
 
 p6df::prompt::dir::line() {
 
   local dir=$fg[green]%/$reset_color
 
-  echo $dir
+  p6_return_str "$dir"
 }
 
 p6df::prompt::tool::line() {
@@ -112,7 +113,7 @@ p6df::prompt::lang::line() {
 
   str=${str## }
   str="lang:\t$str"
-  
+
   p6_return_str "$str"
 }
 
@@ -137,7 +138,7 @@ p6df::prompt::vc::line() {
 }
 
 p6df::prompt::local() {
-  
+
   local -a prompts=()
 
   local module
@@ -146,8 +147,8 @@ p6df::prompt::local() {
       *local*)
 		# %repo
 		p6df::module::parse $module
-                prompts+=($repo[module])
-      		;;
+		prompts+=($repo[module])
+		;;
     esac
   done
 
@@ -155,4 +156,3 @@ p6df::prompt::local() {
 
   p6_return_words "$prompts"
 }
-
