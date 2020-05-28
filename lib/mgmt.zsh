@@ -90,6 +90,7 @@ p6df::mgmt::iterator() {
 		p6_h1 "$repo"
 		p6_run_yield "p6df::mgmt::iterator::execute $P6_DFZ_SRC_P6M7G8_DIR/$repo $@"
 	done
+<<<<<<< HEAD
 }
 
 p6df::mgmt::iterator::execute() {
@@ -107,3 +108,7 @@ p6df::mgmt::iterator::execute() {
 		p6_run_code "$@"
 	)
 }
+=======
+    )
+}
+>>>>>>> chore(docs): regen (#4)
