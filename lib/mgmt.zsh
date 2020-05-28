@@ -111,4 +111,7 @@ p6df::mgmt::iterator::execute() {
 =======
     )
 }
+<<<<<<< HEAD
 >>>>>>> chore(docs): regen (#4)
+=======
+>>>>>>> Revert "chore(docs): regen (#4)"

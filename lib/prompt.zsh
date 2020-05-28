@@ -1,5 +1,21 @@
+#####################################################################################################
+#>
 # p6df::prompt::init
 #
+#<
+####################################################################################################
+p6df::prompt::init() {
+
+  # @PromptLines
+  p6df::util::exists "p6df::user::prompt" && p6df::user::prompt
+
+  p6df::prompt::process
+
+  export P6_DFZ_PROMPT=${(j: :)PromptLines}
+}
+
+#####################################################################################################
+#>
 # p6df::prompt::process
 #
 #<
@@ -97,6 +113,10 @@ p6df::prompt::lang::line() {
 
   str=${str## }
   str="lang:\t$str"
+<<<<<<< HEAD
+=======
+
+>>>>>>> Revert "chore(docs): regen (#4)"
   p6_return_str "$str"
 }
 
