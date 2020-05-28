@@ -1,12 +1,3 @@
-#####################################################################################################
-#< Install
-# run p6dfz/bin/bootstrap [ghurl]
-# run p6df::modules::fetch()
-# run p6df::modules::external_deps()
-# run p6df::modules::symlink()
-# run p6df::modules::langs()
-#>
-#####################################################################################################
 
 # ----------------------------------------------------------------------------------------------------
 
@@ -50,40 +41,16 @@
 #           p6df::modules::$module::deps()      |
 #           module::init -----------------------+
 
-#####################################################################################################
-#<
-# p6df::modules::pre_init
-#
-# Return
-#
-#>
-####################################################################################################
 p6df::modules::pre_init() {
 
   p6df::util::exists "p6df::user::modules::pre_init" && p6df::user::modules::pre_init
 }
 
-#####################################################################################################
-#<
-# p6df::modules::post_init
-#
-# Return
-#
-#>
-####################################################################################################
 p6df::modules::post_init() {
 
   p6df::util::exists "p6df::user::modules::post_init" && p6df::user::modules::post_init
 }
 
-#####################################################################################################
-#<
-# p6df::modules::bootstrap()
-#
-# Return
-#
-#>
-####################################################################################################
 p6df::modules::bootstrap() {
 
   # @Modules
@@ -105,17 +72,6 @@ p6df::modules::bootstrap() {
   # Intentionally not cleaning @Modules
 }
 
-#####################################################################################################
-#<
-# p6df::modules::collect
-#
-# Creates the global Modules array
-# Allows hook p6df::user::modules to modify Modules
-#
-# Return
-#
-#>
-####################################################################################################
 p6df::modules::collect() {
 
   declare -gaU Modules
@@ -126,16 +82,6 @@ p6df::modules::collect() {
   Modules=($required_modules[@] $Modules[@])
 }
 
-#####################################################################################################
-#<
-# p6df::modules::foreach
-#
-# Recurses through all modules running callback for each
-#
-# Return
-#
-#>
-####################################################################################################
 p6df::modules::foreach() {
   local callback="$1"
   shift
@@ -154,31 +100,11 @@ p6df::modules::foreach() {
 
 # ---------------------------------------------------------------------------------------------------
 
-#####################################################################################################
-#<
-# p6df::modules::fetch
-#
-# "Clones" code to `src` dir for all modules
-#
-# Return
-#
-#>
-####################################################################################################
 p6df::modules::fetch() {
 
   p6df::modules::foreach "p6df::module::fetch" "$P6_DFZ_SRC_DIR"
 }
 
-#####################################################################################################
-#<
-# p6df::modules::external_dpes
-#
-# Installs external recurse for all modules
-#
-# Return
-#
-#>
-####################################################################################################
 p6df::modules::external_deps() {
 
   p6df::util::pm::homebrew::install
@@ -186,43 +112,16 @@ p6df::modules::external_deps() {
   p6df::modules::foreach "p6df::module::external_deps"
 }
 
-#####################################################################################################
-#<
-# p6df::modules::symlink
-#
-# Symlinks from $HOME to relevant files/dirs for all modules
-#
-# Return
-#>
-####################################################################################################
 p6df::modules::symlink() {
 
   p6df::modules::foreach "p6df::module::symlink" "$P6_DFZ_SRC_DIR"
 }
 
-#####################################################################################################
-#<
-# p6df::modules::unlink
-#
-# Unlink from $HOME for all modules
-#
-# Return
-#>
-####################################################################################################
 p6df::modules::unlink() {
 
   p6df::modules::foreach "p6df::module::unlink" "$P6_DFZ_SRC_DIR"
 }
 
-#####################################################################################################
-#<
-# p6df::modules::langs
-#
-# For *env build requested versions, set global
-#
-# Return
-#>
-####################################################################################################
 p6df::modules::langs() {
 
   p6df::modules::foreach "p6df::module::lang" "$P6_DFZ_SRC_DIR"
