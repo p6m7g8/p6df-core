@@ -74,12 +74,16 @@ p6df::mgmt::iterator() {
 	local_repos=$(p6_dir_list "$P6_DFZ_SRC_P6M7G8_DIR")
 
 	local unique_repos
-	unique_repos=$(echo "$local_repos" "$remote_repos" | sort -u)
-	
+	unique_repos=$(
+		for repo in $(echo $local_repos $remote_repos); do
+	      echo $repo
+	    done | sort -u
+	)
+
 	local repo
 	for repo in $(echo "$unique_repos"); do
 		p6_h1 "$repo"
-		p6_run_yield "p6df::mgmt::iterator::execute $P6_DFZ_SRC_P6M7G8_DIR/$repo $@"
+	    p6_run_yield "p6df::mgmt::iterator::execute $P6_DFZ_SRC_P6M7G8_DIR/$repo $@"
 	done
 }
 
