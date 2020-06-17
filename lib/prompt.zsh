@@ -113,10 +113,6 @@ p6df::prompt::lang::line() {
 
   str=${str## }
   str="lang:\t$str"
-<<<<<<< HEAD
-=======
-
->>>>>>> Revert "chore(docs): regen (#4)"
   p6_return_str "$str"
 }
 
