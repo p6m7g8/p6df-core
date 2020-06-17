@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # shellcheck shell=zsh
 
 p6df::mgmt::other::modules::update_all() {
@@ -6,14 +5,6 @@ p6df::mgmt::other::modules::update_all() {
   p6df::mgmt::other::iterator "p6_git_p6_pulll"
 }
 
-=======
-p6df::mgmt::other::modules::update_all() {
-
-  p6df::mgmt::other::iterator "git pull"
-}
-
-
->>>>>>> feature(mgmt): expose api to update non p6m7g8 modules
 p6df::mgmt::other::iterator() {
 
     (
@@ -90,7 +81,6 @@ p6df::mgmt::iterator() {
 		p6_h1 "$repo"
 		p6_run_yield "p6df::mgmt::iterator::execute $P6_DFZ_SRC_P6M7G8_DIR/$repo $@"
 	done
-<<<<<<< HEAD
 }
 
 p6df::mgmt::iterator::execute() {
@@ -99,8 +89,8 @@ p6df::mgmt::iterator::execute() {
 
 	local repo
 	repo=$(basename "$dir")
-    if ! p6_dir_exists "$dir"; then
-	  gh repo clone p6m7g8/$repo $dir
+	if ! p6_dir_exists "$dir"; then
+		gh repo clone p6m7g8/$repo $dir
 	fi
 
 	(
@@ -108,10 +98,3 @@ p6df::mgmt::iterator::execute() {
 		p6_run_code "$@"
 	)
 }
-=======
-    )
-}
-<<<<<<< HEAD
->>>>>>> chore(docs): regen (#4)
-=======
->>>>>>> Revert "chore(docs): regen (#4)"
