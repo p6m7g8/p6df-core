@@ -29,13 +29,16 @@ p6df::modules::core::cdpath() {
 
 p6df::modules::core::aliases() {
 
-  alias p6df_uo="p6df::mgmt::other::modules::update_all"
+  alias p6df_r="p6df::init"
 
   alias p6df_i="p6df::mgmt::iterator"
-  alias p6df_u="p6df::mgmt::update_all"
-  alias p6df_r="p6df::mgmt::reload"
-  alias p6df_d="p6df::mgmt::modules::diff"
+  alias p6df_u="p6df::mgmt::update"
 
+  alias p6df_mu="p6df::mgmt::modules::update"
+  alias p6df_md="p6df::mgmt::modules::diff"
+  alias p6df_mp="p6df::mgmt::modules::pull"
+  alias p6df_mP="p6df::mgmt::modules::push"
+  alias p6df_mS="p6df::mgmt::modules::sync"
 }
 
 p6df::modules::core::init() {

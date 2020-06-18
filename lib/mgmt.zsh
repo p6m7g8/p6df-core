@@ -1,46 +1,15 @@
 # shellcheck shell=zsh
 
-p6df::mgmt::other::modules::update_all() {
+p6df::mgmt::update() {
 
-  p6df::mgmt::other::iterator "p6_git_p6_pulll"
+  p6df::mgmt::modules::update
 }
 
-p6df::mgmt::other::iterator() {
+p6df::mgmt::modules::update() {
 
-    (
-	echo "==> $P6_DFZ_SRC_DIR"
-	cd $P6_DFZ_SRC_DIR
-
-	local org
-	for org in $(cd . ; ls -1 | grep -v p6m7g8); do
-	    (
-		echo "==[org]> $org"
-		cd $P6_DFZ_SRC_DIR/$org
-		local repo
-		for repo in $(cd . ; ls -1); do
-		    (
-			echo "==[repo]> $repo"
-			cd $repo
-			eval "$@"
-		    )
-		done
-	    )
-	done
-    )
-}
-
-p6df::mgmt::update_all() {
-
-  p6df::mgmt::reload
+  p6df::init
   p6df::modules::fetch
-
-  p6df::mgmt::reload
-  p6df::mgmt::modules::pull
-  p6df::mgmt::reload
-}
-
-p6df::mgmt::reload() {
-
+  p6df::modules::pull
   p6df::init
 }
 
@@ -66,7 +35,6 @@ p6df::mgmt::modules::sync() {
 
 p6df::mgmt::iterator() {
 
-	# Step one pull the repo repos
 	local remote_repos
 	remote_repos=$(p6_github_api_org_repos_list "https://api.github.com" "p6m7g8")
 
@@ -74,11 +42,7 @@ p6df::mgmt::iterator() {
 	local_repos=$(p6_dir_list "$P6_DFZ_SRC_P6M7G8_DIR")
 
 	local unique_repos
-	unique_repos=$(
-		for repo in $(echo $local_repos $remote_repos); do
-	      echo $repo
-	    done | sort -u
-	)
+	unique_repos=$(p6_word_unique "$local_repos" "$remote_repos")
 
 	local repo
 	for repo in $(echo "$unique_repos"); do
