@@ -1,6 +1,27 @@
 # shellcheck shell=zsh
+######################################################################
+#<
+#
+# Function: p6df::modules::core::version()
+#
+#>
+######################################################################
 p6df::modules::core::version() { echo "0.0.1" }
+######################################################################
+#<
+#
+# Function: p6df::modules::core::deps()
+#
+#>
+######################################################################
 p6df::modules::core::deps()    { ModuleDeps=(p6m7g8/p6common) }
+######################################################################
+#<
+#
+# Function: p6df::modules::core::home::symlink()
+#
+#>
+######################################################################
 p6df::modules::core::home::symlink() {
 
   ln -fs $P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zshrc  $P6_DFZ_DATA_DIR/.zshrc
@@ -8,6 +29,13 @@ p6df::modules::core::home::symlink() {
 #  ln -fs $P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zsh-me $P6_DFZ_DATA_DIR/.zsh-me
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::core::path()
+#
+#>
+######################################################################
 p6df::modules::core::path() {
 
   path=()
@@ -20,6 +48,13 @@ p6df::modules::core::path() {
   p6df::util::path_if /sbin
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::core::cdpath()
+#
+#>
+######################################################################
 p6df::modules::core::cdpath() {
 
   cdpath=()
@@ -27,6 +62,13 @@ p6df::modules::core::cdpath() {
   p6df::util::cdpath_if $P6_DFZ_SRC_P6M7G8_DIR
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::core::aliases()
+#
+#>
+######################################################################
 p6df::modules::core::aliases() {
 
   alias p6df_r="p6df::init"
@@ -41,6 +83,13 @@ p6df::modules::core::aliases() {
   alias p6df_mS="p6df::mgmt::modules::sync"
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::core::init()
+#
+#>
+######################################################################
 p6df::modules::core::init() {
 
   p6df::modules::core::path
