@@ -75,7 +75,7 @@ p6df::prompt::dir::line() {
 
 p6df::prompt::tool::line() {
 
-  local -a tools=(terraform docker jenkins) # jira confluence
+  local -a tools=(terraform docker kubernetes jenkins) # jira confluence
 
   local tool
   for tool in $tools[@]; do
@@ -85,7 +85,7 @@ p6df::prompt::tool::line() {
 
 p6df::prompt::cloud::line() {
 
-  local -a clouds=(aws gcp azure) # salesforce digitialocean rspace)
+  local -a clouds=(aws azure gcp) # salesforce digitialocean rspace oracle sap ibm servicenow)
 
   local cloud
   for cloud in $clouds[@]; do
