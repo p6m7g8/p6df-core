@@ -81,6 +81,7 @@ p6df::modules::core::aliases() {
   alias p6df_mp="p6df::mgmt::modules::pull"
   alias p6df_mP="p6df::mgmt::modules::push"
   alias p6df_mS="p6df::mgmt::modules::sync"
+  alias p6df_ms="p6df::mgmt::modules::status"
 }
 
 ######################################################################

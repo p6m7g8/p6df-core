@@ -260,3 +260,24 @@ p6df::module::fetch() {
   # cleanup
   unset repo
 }
+
+#####################################################################################################
+#>
+# p6df::module::pull
+#
+# Return
+#<
+####################################################################################################
+p6df::module::pull() {
+  local module="$1"
+
+  # %repo
+  p6df::module::parse "$module"
+
+  (cd $P6_DFZ_SRC_DIR/$repo[org]/$repo[repo] ; git pull)
+
+  p6df::module::recurse "p6df::module::pull"
+
+  # cleanup
+  unset repo
+}

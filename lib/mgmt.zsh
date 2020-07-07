@@ -13,6 +13,11 @@ p6df::mgmt::modules::update() {
   p6df::init
 }
 
+p6df::mgmt::modules::status() {
+
+  p6df::mgmt::iterator "p6_git_p6_status"
+}
+
 p6df::mgmt::modules::diff() {
 
   p6df::mgmt::iterator "p6_git_p6_diff"

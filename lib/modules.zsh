@@ -171,6 +171,21 @@ p6df::modules::fetch() {
 
 #####################################################################################################
 #<
+# p6df::modules::pull
+#
+# "Pulls" code to `src` dir for all modules
+#
+# Return
+#
+#>
+####################################################################################################
+p6df::modules::pull() {
+
+  p6df::modules::foreach "p6df::module::pull" "$P6_DFZ_SRC_DIR"
+}
+
+#####################################################################################################
+#<
 # p6df::modules::external_dpes
 #
 # Installs external recurse for all modules
