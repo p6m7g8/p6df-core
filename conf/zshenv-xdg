@@ -55,3 +55,4 @@ export P6_VERBOSE=1
 
 # https://wiki.archlinux.org/index.php/XDG_Base_Directory_support for ZSH/ZDOTDIR
 export ZDOTDIR=$P6_DFZ_DATA_DIR
+export ZSH_CACHE_DIR=$ZDOTDIR
