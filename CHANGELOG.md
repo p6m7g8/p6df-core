@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/p6m7g8/p6df-core/compare/v1.0.2...v1.0.3) (2020-09-20)
+
+
+### Features
+
+* **env:** adds ZSH_CACHE_DIR ([#16](https://github.com/p6m7g8/p6df-core/issues/16)) ([ca0b972](https://github.com/p6m7g8/p6df-core/commit/ca0b9725ec80e46462cf9255e1cd18a6001415db))
+* **prompt:** + helm ([#20](https://github.com/p6m7g8/p6df-core/issues/20)) ([9027621](https://github.com/p6m7g8/p6df-core/commit/902762123ce8fc954a4f00594bb6bf4756362056))
+* **prompt:** adds kubernetes, sorts clouds ([#15](https://github.com/p6m7g8/p6df-core/issues/15)) ([f13adbb](https://github.com/p6m7g8/p6df-core/commit/f13adbb9667980fe4102a1fe9837a427017e8476))
+
+
+### Bug Fixes
+
+* **prompt:** cloud verticle spacing works now ([#19](https://github.com/p6m7g8/p6df-core/issues/19)) ([47e899a](https://github.com/p6m7g8/p6df-core/commit/47e899ac4c4af4306f64b59313dff416c1b812f8))
+* **prompt:** remove duplicate node ([#18](https://github.com/p6m7g8/p6df-core/issues/18)) ([9a7ef2e](https://github.com/p6m7g8/p6df-core/commit/9a7ef2e304e0eb382b2aeb841041634c218d888f))
+* **zsh:** make cache dir for later use by plugins ([#17](https://github.com/p6m7g8/p6df-core/issues/17)) ([583d243](https://github.com/p6m7g8/p6df-core/commit/583d2434a17614f5cbcf7da23bd91e992bec39df))
+
 ### [1.0.2](https://github.com/p6m7g8/p6df-core/compare/v1.0.1...v1.0.2) (2020-07-07)
 
 
