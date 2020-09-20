@@ -88,8 +88,15 @@ p6df::prompt::cloud::line() {
   local -a clouds=(aws azure gcp) # salesforce digitialocean rspace oracle sap ibm servicenow)
 
   local cloud
+  local str=""
   for cloud in $clouds[@]; do
-    p6df::util::exists p6df::prompt::${cloud}::line && p6df::prompt::${cloud}::line
+    func="p6df::prompt::${cloud}::line"
+    if p6df::util::exists $func; then
+      rv=$($func)
+    fi
+    if ! p6_string_blank "$rv"; then
+      p6_echo "$rv"
+    fi 
   done
 }
 
