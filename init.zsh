@@ -84,6 +84,13 @@ p6df::modules::core::aliases() {
   alias p6df_ms="p6df::mgmt::modules::status"
 }
 
+######################################################################
+#<
+#
+# Function: p6df::modules::core::dirs()
+#
+#>
+######################################################################
 p6df::modules::core::dirs() {
 
   mkdir -p $ZSH_CACHE_DIR  
