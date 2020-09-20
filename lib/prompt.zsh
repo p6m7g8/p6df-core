@@ -75,7 +75,7 @@ p6df::prompt::dir::line() {
 
 p6df::prompt::tool::line() {
 
-  local -a tools=(terraform docker kubernetes jenkins) # jira confluence
+  local -a tools=(terraform docker kubernetes helm jenkins) # jira confluence
 
   local tool
   for tool in $tools[@]; do
