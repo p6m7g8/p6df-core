@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/p6m7g8/p6df-core/compare/v1.0.3...v1.0.4) (2020-09-27)
+
+
+### Bug Fixes
+
+* **module:** robbyrussell -> ohmyzsh ([#21](https://github.com/p6m7g8/p6df-core/issues/21)) ([410f9c4](https://github.com/p6m7g8/p6df-core/commit/410f9c4e2d486cca4b23f6d3939edc524652e72c))
+
 ### [1.0.3](https://github.com/p6m7g8/p6df-core/compare/v1.0.2...v1.0.3) (2020-09-20)
 
 
