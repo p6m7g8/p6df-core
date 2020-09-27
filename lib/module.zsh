@@ -94,7 +94,7 @@ p6df::module::parse() {
 
   if [[ $repo[repo] =~ ^p6 ]]; then
     repo[load_path]=$repo[path]/init.zsh
-  elif [[ $repo[org] = robbyrussell ]]; then
+  elif [[ $repo[org] = ohmyzsh ]]; then
       if [[ $repo[sub] =~ lib ]]; then
 	      repo[load_path]=$repo[path]/$repo[sub].zsh
       else
