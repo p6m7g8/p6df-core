@@ -32,35 +32,6 @@ p6df::module::recurse() {
 ######################################################################
 #<
 #
-# Function: p6df::module::recurse2(callback, ...)
-#
-#  Args:
-#	callback - 
-#	... - 
-#
-#>
-######################################################################
-p6df::module::recurse2() {
-  local callback="$1"
-  shift 1
-
-  ## @ModuleDeps
-  local -aU ModuleDeps
-
-  # XXX: should be tail-recursive
-  p6df::util::exists "$repo[prefix]::deps" && $repo[prefix]::deps
-
-  local dep
-  for dep in $ModuleDeps[@]; do
-      eval "$callback"
-  done
-
-  # cleanup
-  unset ModuleDeps
-}
-######################################################################
-#<
-#
 # Function: p6df::module::act(module, module_function, callback)
 #
 #  Args:
