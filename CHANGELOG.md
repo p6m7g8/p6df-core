@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/p6m7g8/p6df-core/compare/v1.0.4...v2.0.0) (2020-10-11)
+
+
+### Features
+
+* **api:** v2.0.0-alpha ([#25](https://github.com/p6m7g8/p6df-core/issues/25)) ([6e47ec2](https://github.com/p6m7g8/p6df-core/commit/6e47ec2072f04c6b7e2b8b8e7fc1f5d1b9cd06cf))
+
+
+### Bug Fixes
+
+* **api:** drop unused function p6df::module::recurse2 ([#24](https://github.com/p6m7g8/p6df-core/issues/24)) ([da62b00](https://github.com/p6m7g8/p6df-core/commit/da62b00d1fb522ba73b232aa4d7fa3957b456198))
+* **doc:** the function headers had markers inverted confusing the doc gen ([#22](https://github.com/p6m7g8/p6df-core/issues/22)) ([b30ed59](https://github.com/p6m7g8/p6df-core/commit/b30ed59728bd36f88c9e5ce9d05cc5f76a5c3e64))
+
 ### [1.0.4](https://github.com/p6m7g8/p6df-core/compare/v1.0.3...v1.0.4) (2020-09-27)
 
 
