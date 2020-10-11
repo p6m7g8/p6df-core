@@ -1,71 +1,14 @@
 ######################################################################
 #<
 #
-# Function: p6df::module::recurse(callback, ...)
-#
-#  Args:
-#	callback - 
-#	... - 
-#
-#>
-######################################################################
-p6df::module::recurse() {
-  local callback="$1"
-  shift 1
-
-  ## @ModuleDeps
-  local -aU ModuleDeps
-
-  # XXX: should be tail-recursive
-  p6df::util::exists "$repo[prefix]::deps" && $repo[prefix]::deps
-
-  local dep
-  for dep in $ModuleDeps[@]; do
-#      echo eval "[$callback] [\"$dep\"] [\"$@\"] "
-      eval "$callback \"$dep\" \"$@\" "
-  done
-
-  # cleanup
-  unset ModuleDeps
-}
-
-######################################################################
-#<
-#
-# Function: p6df::module::act(module, module_function, callback)
-#
-#  Args:
-#	module - 
-#	module_function - 
-#	callback - 
-#
-#>
-######################################################################
-p6df::module::act() {
-  local module="$1"
-  local module_function="$2"
-  local callback="$3"
-
-  # %repo
-  p6df::module::parse "$module"
-  p6df::util::exists "p6df::modules::$repo[module]::$module_function" && p6df::modules::$repo[module]::$module_function
-  p6df::module::recurse "$callback" "$@"
-
-  # cleanup
-  unset repo
-}
-
-######################################################################
-#<
-#
-# Function: p6df::module::parse(module)
+# Function: p6df::core::module::parse(module)
 #
 #  Args:
 #	module - 
 #
 #>
 ######################################################################
-p6df::module::parse() {
+p6df::core::module::parse() {
   local module="$1"
 
   declare -gA repo
@@ -88,9 +31,9 @@ p6df::module::parse() {
     repo[load_path]=$repo[path]/init.zsh
   elif [[ $repo[org] = ohmyzsh ]]; then
       if [[ $repo[sub] =~ lib ]]; then
-	      repo[load_path]=$repo[path]/$repo[sub].zsh
+        repo[load_path]=$repo[path]/$repo[sub].zsh
       else
-	      repo[load_path]=$repo[path]/$repo[sub]/$repo[plugin].plugin.zsh
+        repo[load_path]=$repo[path]/$repo[sub]/$repo[plugin].plugin.zsh
       fi
   elif [[ $repo[repo] = prezto ]]; then
       repo[load_path]=$repo[path]/$repo[sub]/init.zsh
@@ -103,142 +46,212 @@ p6df::module::parse() {
 ######################################################################
 #<
 #
-# Function: p6df::module::external_deps(module)
+# Function: p6df::core::module::init::start(module)
 #
 #  Args:
 #	module - 
 #
 #>
 ######################################################################
-p6df::module::external_deps() {
+p6df::core::module::init::start() {
   local module="$1"
 
-  p6df::module::act "$module" "external::brew" "p6df::module::external_deps"
+  p6df::core::modules::recurse::_bootstrap "$module" "init::pre"
+  p6df::core::modules::recurse::internal "$module" "init"
+  p6df::core::modules::recurse::internal "$module" "init::post"
 }
 
 ######################################################################
 #<
 #
-# Function: p6df::module::symlink(module)
+# Function: p6df::core::module::fetch(module, dep, org, repo, ..., prefix)
 #
 #  Args:
 #	module - 
+#	dep - 
+#	org - 
+#	repo - 
+#	... - 
+#	prefix - 
 #
 #>
 ######################################################################
-p6df::module::symlink() {
+p6df::core::module::fetch() {
   local module="$1"
 
-  p6df::module::act "$module" "home::symlink" "p6df::module::symlink"
+  p6df::core::modules::recurse::callback "$module" "_fetch" "$P6_DFZ_SRC_DIR"
+}
+
+_fetch() {
+  local dep="$1"
+  local org="$2"
+  local repo="$3"
+  shift 3
+  local prefix="$1"
+
+  git clone https://github.com/$org/$repo $prefix/$org/$repo
 }
 
 ######################################################################
 #<
 #
-# Function: p6df::module::unlink(module)
+# Function: p6df::core::module::pull(module, dep, org, repo, ..., prefix)
 #
 #  Args:
 #	module - 
+#	dep - 
+#	org - 
+#	repo - 
+#	... - 
+#	prefix - 
 #
 #>
 ######################################################################
-p6df::module::unlink() {
+p6df::core::module::pull() {
   local module="$1"
 
-  p6df::module::act "$module" "home::unlink" "p6df::module::unlink"
+  p6df::core::modules::recurse::callback "$module" "_pull" "$P6_DFZ_SRC_DIR"
+}
+
+_pull() {
+  local dep="$1"
+  local org="$2"
+  local repo="$3"
+  shift 3
+  local prefix="$1"
+
+  (cd $prefix/$org/$repo ; p6_git_p6_pull)
 }
 
 ######################################################################
 #<
 #
-# Function: p6df::module::lang(module)
+# Function: p6df::core::module::push(module, dep, org, repo, ..., prefix)
 #
 #  Args:
 #	module - 
+#	dep - 
+#	org - 
+#	repo - 
+#	... - 
+#	prefix - 
 #
 #>
 ######################################################################
-p6df::module::lang() {
+p6df::core::module::push() {
   local module="$1"
 
-  p6df::module::act "$module" "langs" "p6df::module::lang"
+  p6df::core::modules::recurse::callback "$module" "_push" "$P6_DFZ_SRC_DIR"
+}
+
+_push() {
+  local dep="$1"
+  local org="$2"
+  local repo="$3"
+  shift 3
+  local prefix="$1"
+
+  (cd $prefix/$org/$repo ; p6_git_p6_push)
 }
 
 ######################################################################
 #<
 #
-# Function: p6df::module::init(module)
+# Function: p6df::core::module::sync(module, dep, org, repo, ..., prefix)
 #
 #  Args:
 #	module - 
+#	dep - 
+#	org - 
+#	repo - 
+#	... - 
+#	prefix - 
 #
 #>
 ######################################################################
-p6df::module::init() {
+p6df::core::module::sync() {
   local module="$1"
 
-  p6df::module::act "$module" "init" "p6df::module::init"
+  p6df::core::modules::recurse::callback "$module" "_sync" "$P6_DFZ_SRC_DIR"
+}
+
+_sync() {
+  local dep="$1"
+  local org="$2"
+  local repo="$3"
+  shift 3
+  local prefix="$1"
+
+  (cd $prefix/$org/$repo ; p6_git_p6_sync)
 }
 
 ######################################################################
 #<
 #
-# Function: p6df::module::pre_init(module)
+# Function: p6df::core::module::status(module, dep, org, repo, ..., prefix)
 #
 #  Args:
 #	module - 
+#	dep - 
+#	org - 
+#	repo - 
+#	... - 
+#	prefix - 
 #
 #>
 ######################################################################
-p6df::module::pre_init() {
+p6df::core::module::status() {
   local module="$1"
 
-  p6df::module::act "$module" "pre_init" "p6df::module::pre_init"
+  p6df::core::modules::recurse::callback "$module" "_status" "$P6_DFZ_SRC_DIR"
+}
+
+_status() {
+  local dep="$1"
+  local org="$2"
+  local repo="$3"
+  shift 3
+  local prefix="$1"
+
+  (cd $prefix/$org/$repo ; p6_git_p6_status)
 }
 
 ######################################################################
 #<
 #
-# Function: p6df::module::post_init(module)
+# Function: p6df::core::module::diff(module, dep, org, repo, ..., prefix)
 #
 #  Args:
 #	module - 
+#	dep - 
+#	org - 
+#	repo - 
+#	... - 
+#	prefix - 
 #
 #>
 ######################################################################
-p6df::module::post_init() {
+p6df::core::module::diff() {
   local module="$1"
 
-  p6df::module::act "$module" "post_init" "p6df::module::post_init"
+  p6df::core::modules::recurse::callback "$module" "_diff" "$P6_DFZ_SRC_DIR"
 }
+
+_diff() {
+  local dep="$1"
+  local org="$2"
+  local repo="$3"
+  shift 3
+  local prefix="$1"
+
+  (cd $prefix/$org/$repo ; p6_git_p6_diff)
+}
+
 
 ######################################################################
 #<
 #
-# Function: p6df::module::load(module)
-#
-#  Args:
-#	module - 
-#
-#>
-######################################################################
-p6df::module::load() {
-  local module="$1"
-
-  # %repo
-  p6df::module::parse "$module"
-
-  p6df::module::load::files "$repo[load_path]" "$repo[extra_load_path]"
-  p6df::module::recurse "p6df::module::load"
-
-  # cleanup
-  unset repo
-}
-
-######################################################################
-#<
-#
-# Function: p6df::module::load::files(relpath, relaux)
+# Function: p6df::core::module::source(relpath, relaux)
 #
 #  Args:
 #	relpath - 
@@ -246,74 +259,10 @@ p6df::module::load() {
 #
 #>
 ######################################################################
-p6df::module::load::files() {
+p6df::core::module::source() {
     local relpath="$1"
     local relaux="$2"
 
-###
-#    echo "===========> $repo[module]"
-#    echo "repo[prefix] = $repo[prefix]"
-#    echo "repo[sub]    = $repo[sub]"
-#    echo "repo[ns]     = $repo[ns]"
-#    echo "repo[plugin] = $repo[plugin]"
-#    echo "repo[load_path] = $repo[load_path]"
-#    echo "repo[extra_load_path] = $repo[extra_load_path]"
-#
-#    echo "relaux:  $P6_DFZ_SRC_DIR/$relaux"
-#    echo "relpath: $P6_DFZ_SRC_DIR/$relpath"
-##
-    [[ $relaux ]] && p6df::util::file_load "$P6_DFZ_SRC_DIR/$relaux"
-    p6df::util::file_load "$P6_DFZ_SRC_DIR/$relpath"
-}
-
-######################################################################
-#<
-#
-# Function: p6df::module::fetch(module)
-#
-#  Args:
-#	module - 
-#
-#>
-######################################################################
-p6df::module::fetch() {
-  local module="$1"
-
-  # %repo
-  p6df::module::parse "$module"
-
-  git clone https://github.com/$repo[org]/$repo[repo] $P6_DFZ_SRC_DIR/$repo[org]/$repo[repo]
-
-  p6df::module::recurse "p6df::module::fetch"
-
-  # cleanup
-  unset repo
-}
-
-><
-# p6df::module::pull
-#
-# Return
-######################################################################
-#<
-#
-# Function: p6df::module::pull(module)
-#
-#  Args:
-#	module - 
-#
-#>
-######################################################################
-p6df::module::pull() {
-  local module="$1"
-
-  # %repo
-  p6df::module::parse "$module"
-
-  (cd $P6_DFZ_SRC_DIR/$repo[org]/$repo[repo] ; git pull)
-
-  p6df::module::recurse "p6df::module::pull"
-
-  # cleanup
-  unset repo
+    [[ -n "$relaux" ]] && p6df::util::file::load "$P6_DFZ_SRC_DIR/$relaux"
+    p6df::util::file::load "$P6_DFZ_SRC_DIR/$relpath"
 }

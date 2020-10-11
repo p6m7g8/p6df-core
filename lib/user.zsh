@@ -1,11 +1,11 @@
 ######################################################################
 #<
 #
-# Function: p6df::core::theme::init()
+# Function: p6df::core::user::init()
 #
 #>
 ######################################################################
-p6df::core::theme::init() {
+p6df::core::user::init() {
 
-  p6df::util::run::if "p6df::user::theme"
+  p6df::util::file::load "$HOME/.zsh-me"
 }
