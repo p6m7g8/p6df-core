@@ -1,28 +1,24 @@
 ######################################################################
 #<
 #
-# Function: p6df::prompt::init()
+# Function: p6df::core::prompt::init()
 #
 #>
 ######################################################################
-p6df::prompt::init() {
+p6df::core::prompt::init() {
+  p6df::util::run::if "p6df::user::prompt"
 
-  # @PromptLines
-  p6df::util::exists "p6df::user::prompt" && p6df::user::prompt
-
-  p6df::prompt::process
-
-  export P6_DFZ_PROMPT=${(j: :)PromptLines}
+  p6df::core::prompt::process
 }
 
 ######################################################################
 #<
 #
-# Function: p6df::prompt::process()
+# Function: p6df::core::prompt::process()
 #
 #>
 ######################################################################
-p6df::prompt::process() {
+p6df::core::prompt::process() {
 
   setopt prompt_subst
   PROMPT="\$(p6df::prompt::runtime $PromptLines[@])"
@@ -34,207 +30,23 @@ $PROMPT
 ######################################################################
 #<
 #
-# Function: p6df::prompt::runtime()
+# Function: p6df::prompt::runtime(...)
+#
+#  Args:
+#	... - 
 #
 #>
 ######################################################################
 p6df::prompt::runtime() {
+  shift 0
 
-  local -a lines
-
-  local line
-  for line in $@; do
-    case $line in
-      %local%)
-	local tmp=$(p6df::prompt::local)
-	lines+=($tmp)
-	;;
-      *)
-	lines+=($line)
-	;;
-    esac
-  done
-
-  for line in $lines[@]; do
-    local func="p6df::prompt::$line::line"
-    if p6df::util::exists $func; then
-      local cnt=$($func)
-      [ -n "$cnt" ] && p6_echo "$cnt"
+  local lf
+  for lf in "$@"; do
+    local func="p6df::modules::$lf"
+    p6_log "$func"
+    local cnt=$(p6df::util::run::if "$func")
+    if ! p6_string_blank "$cnt"; then
+      p6_echo "$cnt"
     fi
   done
-}
-
-######################################################################
-#<
-#
-# Function: str info = p6df::prompt::std::line()
-#
-#  Returns:
-#	str - info
-#
-#>
-######################################################################
-p6df::prompt::std::line() {
-
-  local tty=$fg[cyan]%l$reset_color
-  local user=$fg[blue]%n$reset_color
-  local host=$fg[yellow]%M$reset_color
-
-  local info="[$tty]$user@$host rv=%?"
-
-  p6_return_str "$info"
-}
-
-######################################################################
-#<
-#
-# Function: str dir = p6df::prompt::dir::line()
-#
-#  Returns:
-#	str - dir
-#
-#>
-######################################################################
-p6df::prompt::dir::line() {
-
-  local dir=$fg[green]%/$reset_color
-
-  p6_return_str "$dir"
-}
-
-######################################################################
-#<
-#
-# Function: p6df::prompt::tool::line()
-#
-#>
-######################################################################
-p6df::prompt::tool::line() {
-
-  local -a tools=(terraform docker kubernetes helm jenkins) # jira confluence
-
-  local tool
-  for tool in $tools[@]; do
-    p6df::util::exists p6df::prompt::${tool}::line && p6df::prompt::${tool}::line
-  done
-}
-
-######################################################################
-#<
-#
-# Function: p6df::prompt::cloud::line()
-#
-#>
-######################################################################
-p6df::prompt::cloud::line() {
-
-  local -a clouds=(aws azure gcp) # salesforce digitialocean rspace oracle sap ibm servicenow)
-
-  local cloud
-  local str=""
-  for cloud in $clouds[@]; do
-    func="p6df::prompt::${cloud}::line"
-    if p6df::util::exists $func; then
-      rv=$($func)
-    fi
-    if ! p6_string_blank "$rv"; then
-      p6_echo "$rv"
-    fi 
-  done
-}
-
-######################################################################
-#<
-#
-# Function: str str = p6df::prompt::lang::line()
-#
-#  Returns:
-#	str - str
-#
-#>
-######################################################################
-p6df::prompt::lang::line() {
-  [ -n "${DISABLE_ENVS}" ] && return
-
-  local -a langs=(node python go ruby perl scala lua R java)
-  local lang
-  local str=""
-  for lang in $langs[@]; do
-    local prefix=$(p6_lang_cmd_2_env "$lang")
-    local func="p6df::prompt::${lang}::line"
-    local cntv=""
-    if p6df::util::exists $func; then
-      cntv=$($func)
-    else
-      cntv="n/a"
-    fi
-    str="$str $prefix:$cntv"
-  done
-
-  str=${str## }
-  str="lang:\t$str"
-  p6_return_str "$str"
-}
-
-######################################################################
-#<
-#
-# Function: p6df::prompt::env::line()
-#
-#>
-######################################################################
-p6df::prompt::env::line() {
-  [ -n "${DISABLE_ENVS}" ] && return
-
-  local -a envs=(pipenv gopath)
-
-  local env
-  for env in $envs[@]; do
-    p6df::util::exists p6df::prompt::${env}::line && p6df::prompt::${env}::line
-  done
-}
-
-######################################################################
-#<
-#
-# Function: p6df::prompt::vc::line()
-#
-#>
-######################################################################
-p6df::prompt::vc::line() {
-
-  local -a vcs=(git svn hg lp p4 cvs mg)
-  local vc
-  for vc in $vcs[@]; do
-    p6df::util::exists p6df::prompt::${vc}::line && p6df::prompt::${vc}::line
-  done
-}
-
-######################################################################
-#<
-#
-# Function: words prompts = p6df::prompt::local()
-#
-#  Returns:
-#	words - prompts
-#
-#>
-######################################################################
-p6df::prompt::local() {
-  local -a prompts=()
-
-  local module
-  for module in $Modules[@]; do
-    case $module in
-      *local*)
-		# %repo
-		p6df::module::parse $module
-		prompts+=($repo[module])
-		;;
-    esac
-  done
-
-  local words=${(j: :)prompts}
-
-  p6_return_words "$prompts"
 }
