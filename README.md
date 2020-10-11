@@ -26,6 +26,7 @@
 - p6df::core::module::source(relpath, relaux)
 - p6df::core::module::status(module, dep, org, repo, ..., prefix)
 - p6df::core::module::sync(module, dep, org, repo, ..., prefix)
+- p6df::core::module::version(module)
 
 ### modules.zsh:
 - p6df::core::modules::collect()

@@ -266,3 +266,22 @@ p6df::core::module::source() {
     [[ -n "$relaux" ]] && p6df::util::file::load "$P6_DFZ_SRC_DIR/$relaux"
     p6df::util::file::load "$P6_DFZ_SRC_DIR/$relpath"
 }
+
+######################################################################
+#<
+#
+# Function: p6df::core::module::version(module)
+#
+#  Args:
+#	module - 
+#
+#>
+######################################################################
+p6df::core::module::version() {
+  local module="$1"
+
+  # %repo
+  p6df::core::module::parse "$module"
+
+  p6_file_display $P6_DFZ_SRC_DIR/$repo[org]/$repo[repo]/conf/version  
+}
