@@ -51,7 +51,11 @@ p6df::core::modules::recurse::internal() {
     local module="$1"
     local callback="$2"
 
+    local t0=$EPOCHREALTIME
+
     if [[ _P6_DFZ_LOADED_INIT[$module] -gt 0 ]]; then
+      local t1=$EPOCHREALTIME
+      p6_time "p6df::core::modules::recurse::internal($module): short $(($t1-$t0))"
       return
     fi
 
@@ -74,8 +78,12 @@ p6df::core::modules::recurse::internal() {
     # Original Module (tail-recursive, after dep chain)
     # XXX: how to not reparse
     p6df::core::module::parse "$module"
+    local t2=$EPOCHREALTIME
     p6df::util::run::if "p6df::modules::$repo[module]::$callback"
+    local t3=$EPOCHREALTIME; p6_time "p6df::modules::$repo[module]::$callback(): $(($t3-$t2))"
     _P6_DFZ_LOADED_INIT[$module]=$(($_P6_DFZ_LOADED_INIT[$module]+1))
+    local t1=$EPOCHREALTIME
+    p6_time "p6df::core::modules::recurse::internal($module): full $(($t1-$t0))"
 }
 
 ######################################################################
