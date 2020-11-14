@@ -7,6 +7,8 @@
 ######################################################################
 p6df::core::main::init() {
 
+  zmodload zsh/datetime
+
   p6df::core::user::init
 
   p6df::core::path::init
