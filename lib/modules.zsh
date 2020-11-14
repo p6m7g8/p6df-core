@@ -4,8 +4,8 @@
 # Function: p6df::core::modules::recurse::_bootstrap(module, callback)
 #
 #  Args:
-#	module - 
-#	callback - 
+#	module -
+#	callback -
 #
 #>
 ######################################################################
@@ -42,8 +42,8 @@ p6df::core::modules::recurse::_bootstrap() {
 # Function: p6df::core::modules::recurse::internal(module, callback)
 #
 #  Args:
-#	module - 
-#	callback - 
+#	module -
+#	callback -
 #
 #>
 ######################################################################
@@ -84,9 +84,9 @@ p6df::core::modules::recurse::internal() {
 # Function: p6df::core::modules::recurse::callback(module, ..., callback)
 #
 #  Args:
-#	module - 
+#	module -
 #	... - 
-#	callback - 
+#	callback -
 #
 #>
 ######################################################################
@@ -126,9 +126,9 @@ p6df::core::modules::recurse::callback() {
 # Function: p6df::core::modules::recurse::callback::dep(module, ..., callback)
 #
 #  Args:
-#	module - 
+#	module -
 #	... - 
-#	callback - 
+#	callback -
 #
 #>
 ######################################################################
@@ -161,7 +161,7 @@ p6df::core::modules::recurse::callback::dep() {
 # Function: p6df::core::modules::foreach(callback, ...)
 #
 #  Args:
-#	callback - 
+#	callback -
 #	... - 
 #
 #>
