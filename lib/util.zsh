@@ -16,7 +16,7 @@ p6df::util::user::init() {
 # Function: p6df::util::file::load(file)
 #
 #  Args:
-#	file - 
+#	file -
 #
 #>
 ######################################################################
@@ -34,7 +34,7 @@ p6df::util::file::load() {
 # Function: p6df::util::exists(thing)
 #
 #  Args:
-#	thing - 
+#	thing -
 #
 #>
 ######################################################################
@@ -50,7 +50,7 @@ p6df::util::exists() {
 # Function: p6df::util::run::if(thing, ...)
 #
 #  Args:
-#	thing - 
+#	thing -
 #	... - 
 #
 #>
@@ -68,7 +68,7 @@ p6df::util::run::if() {
 # Function: p6df::util::run::code(thing, ...)
 #
 #  Args:
-#	thing - 
+#	thing -
 #	... - 
 #
 #>
@@ -99,7 +99,7 @@ p6df::util::path_if() {
 # Function: p6df::util::path::if(dir)
 #
 #  Args:
-#	dir - 
+#	dir -
 #
 #>
 ######################################################################
@@ -117,7 +117,7 @@ p6df::util::path::if() {
 # Function: p6df::util::cdpath::if(dir)
 #
 #  Args:
-#	dir - 
+#	dir -
 #
 #>
 ######################################################################

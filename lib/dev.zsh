@@ -37,9 +37,9 @@ EOF
 # Function: p6df::core::dev::graph::dot(module, module, dep)
 #
 #  Args:
-#	module - 
-#	module - 
-#	dep - 
+#	module -
+#	module -
+#	dep -
 #
 #>
 ######################################################################

@@ -4,7 +4,7 @@
 # Function: p6df::core::module::parse(module)
 #
 #  Args:
-#	module - 
+#	module -
 #
 #>
 ######################################################################
@@ -49,7 +49,7 @@ p6df::core::module::parse() {
 # Function: p6df::core::module::init::start(module)
 #
 #  Args:
-#	module - 
+#	module -
 #
 #>
 ######################################################################
@@ -67,12 +67,12 @@ p6df::core::module::init::start() {
 # Function: p6df::core::module::fetch(module, dep, org, repo, ..., prefix)
 #
 #  Args:
-#	module - 
-#	dep - 
-#	org - 
-#	repo - 
+#	module -
+#	dep -
+#	org -
+#	repo -
 #	... - 
-#	prefix - 
+#	prefix -
 #
 #>
 ######################################################################
@@ -98,12 +98,12 @@ _fetch() {
 # Function: p6df::core::module::pull(module, dep, org, repo, ..., prefix)
 #
 #  Args:
-#	module - 
-#	dep - 
-#	org - 
-#	repo - 
+#	module -
+#	dep -
+#	org -
+#	repo -
 #	... - 
-#	prefix - 
+#	prefix -
 #
 #>
 ######################################################################
@@ -129,12 +129,12 @@ _pull() {
 # Function: p6df::core::module::push(module, dep, org, repo, ..., prefix)
 #
 #  Args:
-#	module - 
-#	dep - 
-#	org - 
-#	repo - 
+#	module -
+#	dep -
+#	org -
+#	repo -
 #	... - 
-#	prefix - 
+#	prefix -
 #
 #>
 ######################################################################
@@ -160,12 +160,12 @@ _push() {
 # Function: p6df::core::module::sync(module, dep, org, repo, ..., prefix)
 #
 #  Args:
-#	module - 
-#	dep - 
-#	org - 
-#	repo - 
+#	module -
+#	dep -
+#	org -
+#	repo -
 #	... - 
-#	prefix - 
+#	prefix -
 #
 #>
 ######################################################################
@@ -191,12 +191,12 @@ _sync() {
 # Function: p6df::core::module::status(module, dep, org, repo, ..., prefix)
 #
 #  Args:
-#	module - 
-#	dep - 
-#	org - 
-#	repo - 
+#	module -
+#	dep -
+#	org -
+#	repo -
 #	... - 
-#	prefix - 
+#	prefix -
 #
 #>
 ######################################################################
@@ -222,12 +222,12 @@ _status() {
 # Function: p6df::core::module::diff(module, dep, org, repo, ..., prefix)
 #
 #  Args:
-#	module - 
-#	dep - 
-#	org - 
-#	repo - 
+#	module -
+#	dep -
+#	org -
+#	repo -
 #	... - 
-#	prefix - 
+#	prefix -
 #
 #>
 ######################################################################
@@ -254,8 +254,8 @@ _diff() {
 # Function: p6df::core::module::source(relpath, relaux)
 #
 #  Args:
-#	relpath - 
-#	relaux - 
+#	relpath -
+#	relaux -
 #
 #>
 ######################################################################
@@ -273,7 +273,7 @@ p6df::core::module::source() {
 # Function: p6df::core::module::version(module)
 #
 #  Args:
-#	module - 
+#	module -
 #
 #>
 ######################################################################
