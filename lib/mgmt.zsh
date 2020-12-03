@@ -36,6 +36,13 @@ p6df::core::mgmt::modules::sync() {
 	p6df::core::modules::sync
 }
 
+######################################################################
+#<
+#
+# Function: p6df::core::mgmt::modules::pull()
+#
+#>
+######################################################################
 p6df::core::mgmt::modules::pull() {
 
   p6df::core::modules::pull
