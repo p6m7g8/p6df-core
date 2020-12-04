@@ -33,7 +33,7 @@ $PROMPT
 # Function: p6df::prompt::runtime(...)
 #
 #  Args:
-#	... - 
+#	... -
 #
 #>
 ######################################################################
@@ -42,7 +42,7 @@ p6df::prompt::runtime() {
 
   local lf
   for lf in "$@"; do
-    local func="p6df::modules::$lf"
+    local func="$lf"
     p6_log "$func"
     local cnt=$(p6df::util::run::if "$func")
     if ! p6_string_blank "$cnt"; then
