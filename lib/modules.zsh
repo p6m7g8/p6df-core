@@ -333,3 +333,12 @@ p6df::core::modules::langs() {
   local -A _P6_DFZ_LOADED_INIT
   p6df::core::modules::foreach "p6df::core::module::langs"
 }
+
+p6df::core::modules::brew() {
+
+  # @Modules
+  p6df::core::modules::collect
+
+  local -A _P6_DFZ_LOADED_INIT
+  p6df::core::modules::foreach "p6df::core::module::brew"
+}
