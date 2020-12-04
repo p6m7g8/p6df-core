@@ -61,6 +61,12 @@ p6df::core::module::init::start() {
   p6df::core::modules::recurse::internal "$module" "init::post"
 }
 
+p6df::core::module::langs() {
+  local module="$1"
+
+  p6df::core::modules::recurse::internal "$module" "langs"
+}
+
 ######################################################################
 #<
 #
@@ -247,7 +253,6 @@ _diff() {
   (cd $prefix/$org/$repo ; p6_git_p6_diff)
 }
 
-
 ######################################################################
 #<
 #
@@ -283,5 +288,5 @@ p6df::core::module::version() {
   # %repo
   p6df::core::module::parse "$module"
 
-  p6_file_display $P6_DFZ_SRC_DIR/$repo[org]/$repo[repo]/conf/version  
+  p6_file_display $P6_DFZ_SRC_DIR/$repo[org]/$repo[repo]/conf/version
 }
