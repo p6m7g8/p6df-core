@@ -67,6 +67,12 @@ p6df::core::module::langs() {
   p6df::core::modules::recurse::internal "$module" "langs"
 }
 
+p6df::core::module::brew() {
+  local module="$1"
+
+  p6df::core::modules::recurse::internal "$module" "external::brew"
+}
+
 ######################################################################
 #<
 #
