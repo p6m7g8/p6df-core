@@ -12,7 +12,7 @@
 p6df::core::modules::recurse::_bootstrap() {
     local module="$1"
     local callback="$2"
- 
+
     if [[ _P6_DFZ_LOADED[$module] -gt 0 ]]; then
       return
     fi
@@ -323,4 +323,13 @@ p6df::core::modules::diff() {
   p6df::core::modules::collect
 
   p6df::core::modules::foreach "p6df::core::module::diff"
+}
+
+p6df::core::modules::langs() {
+
+  # @Modules
+  p6df::core::modules::collect
+
+  local -A _P6_DFZ_LOADED_INIT
+  p6df::core::modules::foreach "p6df::core::module::langs"
 }
