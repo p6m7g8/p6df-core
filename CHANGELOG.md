@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/p6m7g8/p6df-core/compare/v2.0.0...v2.1.0) (2020-12-06)
+
+
+### Features
+
+* **api:** +`p6df::core::module::brew` and +`p6df::core::module::brew` ([#35](https://github.com/p6m7g8/p6df-core/issues/35)) ([15b38e5](https://github.com/p6m7g8/p6df-core/commit/15b38e591010fb114c7e72ef1e9c45329371ba05))
+* **api:** +`p6df::core::module::langs` and +`p6df::core::modules::langs` ([#34](https://github.com/p6m7g8/p6df-core/issues/34)) ([f1506bf](https://github.com/p6m7g8/p6df-core/commit/f1506bf4b7dda10ec620d5a8f70cab19ae05529a))
+* **api:** centralize ::version() ([9927891](https://github.com/p6m7g8/p6df-core/commit/992789123cf8fe9bd08a4f342a257c468dc5cc91))
+* **community:** adds CODE_OF_CONDUCT ([315f25e](https://github.com/p6m7g8/p6df-core/commit/315f25e25c325b7c46779023f901c3eafec10530))
+* **github:** adds ISSUE_TEMPLATEs ([b790a6d](https://github.com/p6m7g8/p6df-core/commit/b790a6d9aeccfba46c362112573f54f8837b34fc))
+
+
+* **docs:** fixes whitespace ([aa3850b](https://github.com/p6m7g8/p6df-core/commit/aa3850b1f0b1b9ebd01cd90e2648df1fee3998e7))
+* **prompt:** allow the full prompt name from user ([#33](https://github.com/p6m7g8/p6df-core/issues/33)) ([b13fc9f](https://github.com/p6m7g8/p6df-core/commit/b13fc9fb84f2a6e1849c41785ea5877babf0f91b))
+* **README:** fixes module expansion, adds CodeCov and Synk badges ([#32](https://github.com/p6m7g8/p6df-core/issues/32)) ([11652d3](https://github.com/p6m7g8/p6df-core/commit/11652d3a86f6ae57e72b3bb64cc3eb44950ce219))
+* **README:** updates to template v2.0 ([23e8442](https://github.com/p6m7g8/p6df-core/commit/23e8442775dadcca4732b1c6f4d7842abd738713))
+* **semantic:** no longer needed, defaults are fine ([c05d87d](https://github.com/p6m7g8/p6df-core/commit/c05d87d6c9dbad0016501afaac5bd37bf763eb40))
+
 ## [2.0.0](https://github.com/p6m7g8/p6df-core/compare/v1.0.4...v2.0.0) (2020-10-11)
 
 
