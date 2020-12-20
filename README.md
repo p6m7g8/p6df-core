@@ -1,12 +1,10 @@
 # p6df-core
 
-
 ## Table of Contents
 
 
 ### p6df-core
 - [p6df-core](#p6df-core)
-
   - [Badges](#badges)
   - [Distributions](#distributions)
   - [Summary](#summary)
@@ -23,6 +21,8 @@
 [![Mergify](https://img.shields.io/endpoint.svg?url=https://gh.mergify.io/badges/p6m7g8/p6df-core/&style=flat)](https://mergify.io)
 [![codecov](https://codecov.io/gh/p6m7g8/p6df-core/branch/master/graph/badge.svg?token=14Yj1fZbew)](https://codecov.io/gh/p6m7g8/p6df-core)
 [![Known Vulnerabilities](https://snyk.io/test/github/p6m7g8/p6df-core/badge.svg?targetFile=package.json)](https://snyk.io/test/github/p6m7g8/p6df-core?targetFile=package.json)
+[![Gihub repo dependents](https://badgen.net/github/dependents-repo/p6m7g8/p6df-core)](https://github.com/p6m7g8/p6df-core/network/dependents?dependent_type=REPOSITORY)
+[![Gihub package dependents](https://badgen.net/github/dependents-pkg/p6m7g8/p6df-core)](https://github.com/p6m7g8/p6df-core/network/dependents?dependent_type=PACKAGE)
 
 ## Summary
 
@@ -65,9 +65,11 @@
 
 #### module.zsh:
 
+- p6df::core::module::brew(module)
 - p6df::core::module::diff(module, dep, org, repo, ..., prefix)
 - p6df::core::module::fetch(module, dep, org, repo, ..., prefix)
 - p6df::core::module::init::start(module)
+- p6df::core::module::langs(module)
 - p6df::core::module::parse(module)
 - p6df::core::module::pull(module, dep, org, repo, ..., prefix)
 - p6df::core::module::push(module, dep, org, repo, ..., prefix)
@@ -78,12 +80,14 @@
 
 #### modules.zsh:
 
+- p6df::core::modules::brew()
 - p6df::core::modules::collect()
 - p6df::core::modules::diff()
 - p6df::core::modules::fetch()
 - p6df::core::modules::foreach(callback, ...)
 - p6df::core::modules::init()
 - p6df::core::modules::init::start()
+- p6df::core::modules::langs()
 - p6df::core::modules::pull()
 - p6df::core::modules::push()
 - p6df::core::modules::recurse::_bootstrap(module, callback)
