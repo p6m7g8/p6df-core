@@ -325,6 +325,13 @@ p6df::core::modules::diff() {
   p6df::core::modules::foreach "p6df::core::module::diff"
 }
 
+######################################################################
+#<
+#
+# Function: p6df::core::modules::langs()
+#
+#>
+######################################################################
 p6df::core::modules::langs() {
 
   # @Modules
@@ -334,6 +341,13 @@ p6df::core::modules::langs() {
   p6df::core::modules::foreach "p6df::core::module::langs"
 }
 
+######################################################################
+#<
+#
+# Function: p6df::core::modules::brew()
+#
+#>
+######################################################################
 p6df::core::modules::brew() {
 
   # @Modules

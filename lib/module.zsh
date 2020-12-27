@@ -61,12 +61,32 @@ p6df::core::module::init::start() {
   p6df::core::modules::recurse::internal "$module" "init::post"
 }
 
+######################################################################
+#<
+#
+# Function: p6df::core::module::langs(module)
+#
+#  Args:
+#	module -
+#
+#>
+######################################################################
 p6df::core::module::langs() {
   local module="$1"
 
   p6df::core::modules::recurse::internal "$module" "langs"
 }
 
+######################################################################
+#<
+#
+# Function: p6df::core::module::brew(module)
+#
+#  Args:
+#	module -
+#
+#>
+######################################################################
 p6df::core::module::brew() {
   local module="$1"
 
