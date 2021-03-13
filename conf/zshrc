@@ -1,5 +1,6 @@
 p6df::init() {
 
+  mkdir -p /tmp/p6
   p6df::init::files_load
   p6df::core::main::init
 }
