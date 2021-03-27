@@ -328,6 +328,21 @@ p6df::core::modules::diff() {
 ######################################################################
 #<
 #
+# Function: p6df::core::modules::home::symlink()
+#
+#>
+######################################################################
+p6df::core::modules::home::symlink() {
+
+  # @Modules
+  p6df::core::modules::collect
+
+  p6df::core::modules::foreach "p6df::core::module::home::symlink"
+}
+
+######################################################################
+#<
+#
 # Function: p6df::core::modules::langs()
 #
 #>

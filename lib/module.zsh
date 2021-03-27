@@ -80,6 +80,22 @@ p6df::core::module::langs() {
 ######################################################################
 #<
 #
+# Function: p6df::core::module::home::symlink(module)
+#
+#  Args:
+#	module -
+#
+#>
+######################################################################
+p6df::core::module::home::symlink() {
+  local module="$1"
+
+  p6df::core::modules::recurse::internal "$module" "home::symlink"
+}
+
+######################################################################
+#<
+#
 # Function: p6df::core::module::brew(module)
 #
 #  Args:
