@@ -45,13 +45,16 @@
 #### ../p6df-core/lib/aliases.zsh:
 
 - p6df::core::aliases::init()
+
 #### ../p6df-core/lib/dev.zsh:
 
 - p6df::core::dev::graph()
 - p6df::core::dev::graph::dot(module, module, dep)
+
 #### ../p6df-core/lib/main.zsh:
 
 - p6df::core::main::init()
+
 #### ../p6df-core/lib/mgmt.zsh:
 
 - p6df::core::mgmt::modules::diff()
@@ -61,6 +64,7 @@
 - p6df::core::mgmt::modules::sync()
 - p6df::core::mgmt::modules::update()
 - p6df::core::mgmt::update()
+
 #### ../p6df-core/lib/module.zsh:
 
 - p6df::core::module::brew(module)
@@ -75,6 +79,7 @@
 - p6df::core::module::status(module, dep, org, repo, ..., prefix)
 - p6df::core::module::sync(module, dep, org, repo, ..., prefix)
 - p6df::core::module::version(module)
+
 #### ../p6df-core/lib/modules.zsh:
 
 - p6df::core::modules::brew()
@@ -93,21 +98,26 @@
 - p6df::core::modules::recurse::internal(module, callback)
 - p6df::core::modules::status()
 - p6df::core::modules::sync()
+
 #### ../p6df-core/lib/path.zsh:
 
 - p6df::core::path::cd::init()
 - p6df::core::path::init()
+
 #### ../p6df-core/lib/prompt.zsh:
 
 - p6df::core::prompt::init()
 - p6df::core::prompt::process()
 - p6df::prompt::runtime(...)
+
 #### ../p6df-core/lib/theme.zsh:
 
 - p6df::core::theme::init()
+
 #### ../p6df-core/lib/user.zsh:
 
 - p6df::core::user::init()
+
 #### ../p6df-core/lib/util.zsh:
 
 - p6df::util::cdpath::if(dir)
@@ -120,6 +130,24 @@
 - p6df::util::user::init()
 
 
+
+## Hier
+```text
+.
+├── aliases.zsh
+├── dev.zsh
+├── main.zsh
+├── mgmt.zsh
+├── module.zsh
+├── modules.zsh
+├── path.zsh
+├── prompt.zsh
+├── theme.zsh
+├── user.zsh
+└── util.zsh
+
+0 directories, 11 files
+```
 ## Author
 
 Philip M . Gollucci <pgollucci@p6m7g8.com>
