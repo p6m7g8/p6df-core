@@ -6,6 +6,7 @@
 #  Args:
 #	module -
 #
+#  Environment:	 XXX
 #>
 ######################################################################
 p6df::core::module::parse() {
@@ -80,6 +81,22 @@ p6df::core::module::langs() {
 ######################################################################
 #<
 #
+# Function: p6df::core::module::vscodes(module)
+#
+#  Args:
+#	module -
+#
+#>
+######################################################################
+p6df::core::module::vscodes() {
+  local module="$1"
+
+  p6df::core::modules::recurse::internal "$module" "vscodes"
+}
+
+######################################################################
+#<
+#
 # Function: p6df::core::module::home::symlink(module)
 #
 #  Args:
@@ -122,6 +139,7 @@ p6df::core::module::brew() {
 #	... - 
 #	prefix -
 #
+#  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
 p6df::core::module::fetch() {
@@ -153,6 +171,8 @@ _fetch() {
 #	... - 
 #	prefix -
 #
+#  Depends:	 p6_git
+#  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
 p6df::core::module::pull() {
@@ -184,6 +204,8 @@ _pull() {
 #	... - 
 #	prefix -
 #
+#  Depends:	 p6_git
+#  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
 p6df::core::module::push() {
@@ -215,6 +237,8 @@ _push() {
 #	... - 
 #	prefix -
 #
+#  Depends:	 p6_git
+#  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
 p6df::core::module::sync() {
@@ -246,6 +270,8 @@ _sync() {
 #	... - 
 #	prefix -
 #
+#  Depends:	 p6_git
+#  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
 p6df::core::module::status() {
@@ -277,6 +303,8 @@ _status() {
 #	... - 
 #	prefix -
 #
+#  Depends:	 p6_git
+#  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
 p6df::core::module::diff() {
@@ -304,6 +332,7 @@ _diff() {
 #	relpath -
 #	relaux -
 #
+#  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
 p6df::core::module::source() {
@@ -322,6 +351,8 @@ p6df::core::module::source() {
 #  Args:
 #	module -
 #
+#  Depends:	 p6_file
+#  Environment:	 P6_DFZ_SRC_DIR
 #>
 ######################################################################
 p6df::core::module::version() {

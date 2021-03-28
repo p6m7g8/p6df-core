@@ -80,6 +80,7 @@
 - p6df::core::module::status(module, dep, org, repo, ..., prefix)
 - p6df::core::module::sync(module, dep, org, repo, ..., prefix)
 - p6df::core::module::version(module)
+- p6df::core::module::vscodes(module)
 
 #### ../p6df-core/lib/modules.zsh:
 
@@ -100,6 +101,7 @@
 - p6df::core::modules::recurse::internal(module, callback)
 - p6df::core::modules::status()
 - p6df::core::modules::sync()
+- p6df::core::modules::vscodes()
 
 #### ../p6df-core/lib/path.zsh:
 

@@ -5,6 +5,8 @@
 #
 # Function: p6df::core::dev::graph()
 #
+#  Depends:	 p6_echo
+#  Environment:	 EOF
 #>
 ######################################################################
 p6df::core::dev::graph() {
@@ -41,6 +43,7 @@ EOF
 #	module -
 #	dep -
 #
+#  Depends:	 p6_echo
 #>
 ######################################################################
 p6df::core::dev::graph::dot() {

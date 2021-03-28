@@ -3,6 +3,7 @@
 #
 # Function: p6df::core::path::init()
 #
+#  Environment:	 X11
 #>
 ######################################################################
 p6df::core::path::init() {
@@ -22,6 +23,7 @@ p6df::core::path::init() {
 #
 # Function: p6df::core::path::cd::init()
 #
+#  Environment:	 P6_DFZ_SRC_DIR P6_DFZ_SRC_P6M7G8_DIR
 #>
 ######################################################################
 p6df::core::path::cd::init() {

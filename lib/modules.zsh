@@ -7,6 +7,7 @@
 #	module -
 #	callback -
 #
+#  Environment:	 XXX _P6_DFZ_LOADED
 #>
 ######################################################################
 p6df::core::modules::recurse::_bootstrap() {
@@ -45,6 +46,8 @@ p6df::core::modules::recurse::_bootstrap() {
 #	module -
 #	callback -
 #
+#  Depends:	 p6_time
+#  Environment:	 CALLBACK CIRCUIT EPOCHREALTIME FULL XXX _P6_DFZ_LOADED_INIT
 #>
 ######################################################################
 p6df::core::modules::recurse::internal() {
@@ -55,7 +58,7 @@ p6df::core::modules::recurse::internal() {
 
     if [[ _P6_DFZ_LOADED_INIT[$module] -gt 0 ]]; then
       local t1=$EPOCHREALTIME
-      p6_time "p6df::core::modules::recurse::internal($module): short $(($t1-$t0))"
+      p6_time "$t0" "$t1" "CIRCUIT BREAKER: p6df::core::modules::recurse::internal($module)"
       return
     fi
 
@@ -76,14 +79,16 @@ p6df::core::modules::recurse::internal() {
     done
 
     # Original Module (tail-recursive, after dep chain)
-    # XXX: how to not reparse
-    p6df::core::module::parse "$module"
-    local t2=$EPOCHREALTIME
+    p6df::core::module::parse "$module" # XXX: how to not reparse
+
+    local t2=$EPOCHREALTIME; 
     p6df::util::run::if "p6df::modules::$repo[module]::$callback"
-    local t3=$EPOCHREALTIME; p6_time "p6df::modules::$repo[module]::$callback(): $(($t3-$t2))"
+    local t3=$EPOCHREALTIME; 
+    p6_time "$t2" "$t3" "CALLBACK: p6df::modules::$repo[module]::$callback()"
+
     _P6_DFZ_LOADED_INIT[$module]=$(($_P6_DFZ_LOADED_INIT[$module]+1))
-    local t1=$EPOCHREALTIME
-    p6_time "p6df::core::modules::recurse::internal($module): full $(($t1-$t0))"
+
+    p6_time "$t0" "$t3" "FULL: p6df::core::modules::recurse::internal($module)"
 }
 
 ######################################################################
@@ -96,6 +101,8 @@ p6df::core::modules::recurse::internal() {
 #	... - 
 #	callback -
 #
+#  Depends:	 p6_h3
+#  Environment:	 TODO _P6_DFZ_LOADED_CB
 #>
 ######################################################################
 p6df::core::modules::recurse::callback() {
@@ -172,6 +179,7 @@ p6df::core::modules::recurse::callback::dep() {
 #	callback -
 #	... - 
 #
+#  Environment:	 _P6_DFZ_LOADED_CB
 #>
 ######################################################################
 p6df::core::modules::foreach() {
@@ -208,6 +216,7 @@ p6df::core::modules::collect() {
 #
 # Function: p6df::core::modules::init()
 #
+#  Environment:	 _P6_DFZ_LOADED _P6_DFZ_LOADED_INIT
 #>
 ######################################################################
 p6df::core::modules::init() {
@@ -345,6 +354,7 @@ p6df::core::modules::home::symlink() {
 #
 # Function: p6df::core::modules::langs()
 #
+#  Environment:	 _P6_DFZ_LOADED_INIT
 #>
 ######################################################################
 p6df::core::modules::langs() {
@@ -359,8 +369,26 @@ p6df::core::modules::langs() {
 ######################################################################
 #<
 #
+# Function: p6df::core::modules::vscodes()
+#
+#  Environment:	 _P6_DFZ_LOADED_INIT
+#>
+######################################################################
+p6df::core::modules::vscodes() {
+
+  # @Modules
+  p6df::core::modules::collect
+
+  local -A _P6_DFZ_LOADED_INIT
+  p6df::core::modules::foreach "p6df::core::module::vscodes"
+}
+
+######################################################################
+#<
+#
 # Function: p6df::core::modules::brew()
 #
+#  Environment:	 _P6_DFZ_LOADED_INIT
 #>
 ######################################################################
 p6df::core::modules::brew() {
