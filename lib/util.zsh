@@ -3,6 +3,7 @@
 #
 # Function: p6df::util::user::init()
 #
+#  Environment:	 HOME
 #>
 ######################################################################
 p6df::util::user::init() {

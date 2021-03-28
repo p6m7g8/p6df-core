@@ -16,6 +16,7 @@ p6df::core::prompt::init() {
 #
 # Function: p6df::core::prompt::process()
 #
+#  Environment:	 PROMPT
 #>
 ######################################################################
 p6df::core::prompt::process() {
@@ -35,6 +36,7 @@ $PROMPT
 #  Args:
 #	... - 
 #
+#  Depends:	 p6_echo p6_log p6_string
 #>
 ######################################################################
 p6df::prompt::runtime() {
