@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/p6m7g8/p6df-core/compare/v2.1.0...v2.1.1) (2021-04-04)
+
+
+### Features
+
+* **init:** unconditionally make the log dir ([#37](https://github.com/p6m7g8/p6df-core/issues/37)) ([d49b247](https://github.com/p6m7g8/p6df-core/commit/d49b247b260124263e62300126176c402073262e))
+
+
+* **hier:** splits p6m7g8 and others out ([#38](https://github.com/p6m7g8/p6df-core/issues/38)) ([ec5036d](https://github.com/p6m7g8/p6df-core/commit/ec5036d6806b26a25707fb7733f399f079cecf77))
+* **link:** remove rendundant symlinks; echo for now ([#39](https://github.com/p6m7g8/p6df-core/issues/39)) ([e2fcea3](https://github.com/p6m7g8/p6df-core/commit/e2fcea3a0c82b0aede632d7dc7ba1302b082d55d))
+* **README:** updates generator ([#36](https://github.com/p6m7g8/p6df-core/issues/36)) ([5e10078](https://github.com/p6m7g8/p6df-core/commit/5e1007804b29428e91a3f25f910778299d9c0e8e))
+* **vscode:** splits vscode extensions to their languages ([#40](https://github.com/p6m7g8/p6df-core/issues/40)) ([b427bbb](https://github.com/p6m7g8/p6df-core/commit/b427bbb56a428afbffe331acdce0d45394f9fe3b))
+* Coc -> .github ([c7b0349](https://github.com/p6m7g8/p6df-core/commit/c7b03494bf1ef6ad90ac06178f7f5545208aa81e))
+
 ## [2.1.0](https://github.com/p6m7g8/p6df-core/compare/v2.0.0...v2.1.0) (2020-12-06)
 
 
