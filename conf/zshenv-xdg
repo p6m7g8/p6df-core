@@ -46,6 +46,7 @@ export P6_DFZ_SRC_WORK_DIR=$P6_DFZ_DATA_DIR/src/github.com/work
 export P6_DFZ_SRC_FOCUSED_DIR=$P6_DFZ_DATA_DIR/src/github.com/focused
 export P6_DFZ_SRC_FORKED_DIR=$P6_DFZ_DATA_DIR/src/github.com/forked
 export P6_DFZ_SRC_MISC_DIR=$P6_DFZ_DATA_DIR/src/github.com/misc
+export P6_DFZ_SRC_ORIGINAL_DIR=$P6_DFZ_DATA_DIR/src/github.com/original
 
 export P6_DFZ_ZSHENV_XDG_FILE=$P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zshenv-xdg # myself
 export P6_DFZ_ZSHENV_FILE=$P6_DFZ_SRC_P6M7G8_DIR/p6df-core/conf/zshenv
